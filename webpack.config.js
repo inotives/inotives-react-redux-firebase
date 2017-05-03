@@ -2,6 +2,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const PATHS = {
   src_dir: __dirname + '/src',
@@ -36,6 +37,10 @@ const config = {
         ]
       },
       {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+      },
+      {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"] // equate to: styleLoader(cssLoader(sassLoader('source')))
       },
@@ -45,10 +50,14 @@ const config = {
           {loader: "url-loader?limit=1000&name=images/img_[hash].[ext]" } // convert the images that is <10k to base64 string
         ]
       },
-      // { test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=fonts/font_[hash].[ext]' },
-      // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=fonts/font_[hash].[ext]' },
-      // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader?&name=fonts/font_[hash].[ext]' },
-      // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=fonts/font_[hash].[ext]' }
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      }
     ]
   },
   plugins: [
@@ -56,7 +65,8 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
       filename: 'commons.js'
-    })
+    }),
+    new ExtractTextPlugin('bundle.css')
   ]
 }
 

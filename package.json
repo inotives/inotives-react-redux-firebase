@@ -8,7 +8,7 @@
     "auto-build": "node_modules/.bin/webpack --watch",
     "prod-build": "node_modules/.bin/webpack -p",
     "dev": "node_modules/.bin/webpack-dev-server --content-base dist",
-    "local": "npm run build && node_modules/.bin/http-server -p 1343 dist"
+    "local": "node_modules/.bin/http-server -p 1343 dist"
   },
   "keywords": [
     "inotives",
@@ -22,12 +22,14 @@
     "bootstrap-sass": "^3.3.7",
     "firebase": "^3.9.0",
     "lodash": "^4.17.4",
-    "materialize-css": "^0.98.2",
+    "material-ui": "^0.18.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.4",
     "react-router": "^4.1.1",
     "react-router-redux": "^4.0.8",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0"

@@ -1,12 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import {render} from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import Main from './Main'; // Our custom react component
 
-// style
-import './styles/style.scss'
+// Needed for onTouchTap
+injectTapEventPlugin();
 
-
-ReactDOM.render(
-<div>
-  Hello
-</div>,
-document.getElementById('app'))
+render(<Main />, document.getElementById('app'));
