@@ -4,7 +4,11 @@
   "description": "react redux firebase boilerplate",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node_modules/.bin/webpack",
+    "auto-build": "node_modules/.bin/webpack --watch",
+    "prod-build": "node_modules/.bin/webpack -p",
+    "dev": "node_modules/.bin/webpack-dev-server --content-base dist",
+    "local": "npm run build && node_modules/.bin/http-server -p 1343 dist"
   },
   "keywords": [
     "inotives",
@@ -17,6 +21,7 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "firebase": "^3.9.0",
+    "lodash": "^4.17.4",
     "materialize-css": "^0.98.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -36,6 +41,7 @@
     "css-loader": "^0.28.1",
     "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
+    "http-server": "^0.10.0",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
